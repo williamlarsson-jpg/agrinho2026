@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroConsciente | Futuro Sustentável</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
+        <button id="btn-contrast" aria-pressed="false">🌓 Alto Contraste</button>
+        <button id="btn-font-increase" aria-label="Aumentar tamanho do texto">A+</button>
+        <button id="btn-font-decrease" aria-label="Diminuir tamanho do texto">A-</button>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo" aria-label="AgroConsciente Home">Agro<span>Consciente</span></a>
+            <nav aria-label="Navegação Principal">
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#pilares">Pilares</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="hero-section" aria-labelledby="hero-title">
+            <div class="hero-content scroll-reveal">
+                <h1 id="hero-title">O Futuro da Agricultura é Consciente</h1>
+                <p>Unindo tecnologia de ponta, preservação ambiental e respeito ao produtor para alimentar o mundo de forma sustentável.</p>
+                <a href="#pilares" class="btn-primary">Conheça Nossos Pilares</a>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section scroll-reveal" aria-labelledby="about-title">
+            <h2 id="about-title" class="section-title">Inovações no Campo</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="carousel-track" role="region" aria-live="polite" aria-label="Carrossel de inovações">
+                    </div>
+                <div class="carousel-controls">
+                    <button id="prev-slide" aria-label="Slide anterior">❮</button>
+                    <button id="next-slide" aria-label="Próximo slide">❯</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="pilares" class="pillars-section scroll-reveal" aria-labelledby="pillars-title">
+            <h2 id="pillars-title" class="section-title">Nossos Pilares de Consumo</h2>
+            <div class="grid-container" id="pillars-grid">
+                </div>
+        </section>
+
+        <section id="faq" class="faq-section scroll-reveal" aria-labelledby="faq-title">
+            <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
+            <div class="accordion-container" id="faq-accordion">
+                </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AgroConsciente. Cultivando um amanhã melhor. Desenvolvido com foco em acessibilidade.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
