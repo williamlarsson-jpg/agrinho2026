@@ -217,34 +217,45 @@ function initAiChatLogic() {
     const inp = document.getElementById("chat-input");
     const msgArea = document.getElementById("chat-messages");
 
+    // Abre e fecha ao clicar no botão flutuante principal
     if (toggle && chatWin) {
-        toggle.onclick = () => { chatWin.hidden = !chatWin.hidden; };
-        if (closeBtn) {
-            closeBtn.onclick = (e) => {
-                e.stopPropagation();
-                chatWin.hidden = true;
-            };
-        }
-        if (form && inp && msgArea) {
-            form.onsubmit = (e) => {
-                e.preventDefault();
-                const query = inp.value.trim().toLowerCase();
-                if (!query) return;
+        toggle.onclick = () => { 
+            chatWin.hidden = !chatWin.hidden; 
+        };
+    }
 
-                msgArea.innerHTML += `<div class="msg user-msg">${inp.value}</div>`;
-                inp.value = "";
-                msgArea.scrollTop = msgArea.scrollHeight;
+    // Fecha a janela ao clicar no X
+    if (closeBtn && chatWin) {
+        closeBtn.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation(); // Evita que o clique se propague e reabra o chat
+            chatWin.hidden = true;
+        };
+    }
 
-                setTimeout(() => {
-                    let reply = "Não captei. Use palavras chave como 'definição', 'impacto' ou 'atitudes'.";
-                    for (let key in aiKnowledge) {
-                        if (query.includes(key)) { reply = aiKnowledge[key]; break; }
+    // Envio de mensagens
+    if (form && inp && msgArea) {
+        form.onsubmit = (e) => {
+            e.preventDefault();
+            const query = inp.value.trim().toLowerCase();
+            if (!query) return;
+
+            msgArea.innerHTML += `<div class="msg user-msg">${inp.value}</div>`;
+            inp.value = "";
+            msgArea.scrollTop = msgArea.scrollHeight;
+
+            setTimeout(() => {
+                let reply = "Não captei. Use palavras chave como 'definição', 'impacto' ou 'atitudes'.";
+                for (let key in aiKnowledge) {
+                    if (query.includes(key)) { 
+                        reply = aiKnowledge[key]; 
+                        break; 
                     }
-                    msgArea.innerHTML += `<div class="msg bot-msg">${reply}</div>`;
-                    msgArea.scrollTop = msgArea.scrollHeight;
-                }, 300);
-            };
-        }
+                }
+                msgArea.innerHTML += `<div class="msg bot-msg">${reply}</div>`;
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 300);
+        };
     }
 }
 
