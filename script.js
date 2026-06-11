@@ -217,19 +217,24 @@ function initAiChatLogic() {
     const inp = document.getElementById("chat-input");
     const msgArea = document.getElementById("chat-messages");
 
-    // Abre e fecha ao clicar no botão flutuante principal
+    // Abre e fecha ao clicar no botão flutuante principal usando o display do CSS
     if (toggle && chatWin) {
-        toggle.onclick = () => { 
-            chatWin.hidden = !chatWin.hidden; 
+        toggle.onclick = (e) => { 
+            e.preventDefault();
+            if (chatWin.style.display === "flex") {
+                chatWin.style.display = "none";
+            } else {
+                chatWin.style.display = "flex";
+            }
         };
     }
 
-    // Fecha a janela ao clicar no X
+    // Força o fechamento imediato ao clicar no X
     if (closeBtn && chatWin) {
         closeBtn.onclick = (e) => {
             e.preventDefault();
-            e.stopPropagation(); // Evita que o clique se propague e reabra o chat
-            chatWin.hidden = true;
+            e.stopPropagation(); // Trava a propagação do clique para o botão de trás
+            chatWin.style.display = "none";
         };
     }
 
