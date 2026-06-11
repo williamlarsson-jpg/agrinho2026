@@ -23,6 +23,7 @@
                     <li><button data-target="page-glossario" class="nav-btn">Dicionário do Agro</button></li>
                     <li><button data-target="page-impactos" class="nav-btn">Impactos</button></li>
                     <li><button data-target="page-calculadora" class="nav-btn">Calculadora</button></li>
+                    <li><button data-target="page-jogo" class="nav-btn" style="color: var(--secondary);">🎮 Minigame</button></li>
                 </ul>
             </nav>
         </div>
@@ -90,11 +91,11 @@
                         <button data-target="page-impactos" class="btn-primary link-btn" style="background-color: #d32f2f;">Ver Impactos</button>
                     </div>
 
-                    <div class="card metric-card" style="cursor: pointer;">
-                        <span class="metric-number" style="font-size: 2rem;">🧮</span>
-                        <h3>Calculadora</h3>
-                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Avalie como seus hábitos de consumo urbano se conectam com a produção do agro.</p>
-                        <button data-target="page-calculadora" class="btn-primary link-btn">Abrir Calculadora</button>
+                    <div class="card metric-card" style="border-top: 5px solid #f57c00; cursor: pointer;">
+                        <span class="metric-number" style="color: #f57c00; font-size: 2rem;">🎮</span>
+                        <h3>Simulador Agro</h3>
+                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Gerencie sua própria fazenda e tente equilibrar lucro e ecologia neste desafio.</p>
+                        <button data-target="page-jogo" class="btn-primary link-btn" style="background-color: #f57c00;">Jogar Agora</button>
                     </div>
 
                 </div>
@@ -106,7 +107,7 @@
                 <h2 class="section-title">O que é o Agronegócio?</h2>
                 <p style="text-align: center; margin-bottom: 2rem;">Entenda os conceitos fundamentais e as soluções da cadeia produtiva.</p>
                 
-                <div id="glossary-container" class="tab-panels">
+                <div class="tab-panels">
                     <article class="card">
                         <h3>A Cadeia do Agronegócio</h3>
                         <p style="margin-top:0.5rem; opacity:0.85;">Diferente da agricultura isolada, o agronegócio abrange desde a indústria de insumos (máquinas, fertilizantes, biotecnologia), passa pela produção no campo, e vai até a agroindústria (processamento), logística de transporte, exportação e distribuição final nos mercados comerciais.</p>
@@ -178,6 +179,32 @@
                     <div id="calc-result" class="result-box" hidden>
                         <h3>Resultado da sua Pegada:</h3>
                         <p id="result-text" style="font-size: 1.2rem; font-weight: bold; margin-top: 0.5rem;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-jogo" class="site-page" hidden>
+            <div class="knowledge-section">
+                <h2 class="section-title">Simulador de Agronegócio Sustentável</h2>
+                <p style="text-align: center; margin-bottom: 1.5rem;">Tome decisões como um grande produtor. Mantenha as finanças e o meio ambiente em equilíbrio!</p>
+                
+                <div class="game-container card">
+                    <div class="game-status" style="display: flex; justify-content: space-around; background: #eee; padding: 10px; border-radius: var(--radius); font-weight: bold; margin-bottom: 1.5rem;">
+                        <div>💰 Dinheiro: <span id="game-money">100</span></div>
+                        <div>🌱 Sustentabilidade: <span id="game-eco">100</span>%</div>
+                    </div>
+
+                    <div id="game-content">
+                        <p id="game-text" style="font-size: 1.1rem; margin-bottom: 1.5rem; font-weight: 500;"></p>
+                        <div id="game-options" style="display: flex; flex-direction: column; gap: 10px;">
+                            </div>
+                    </div>
+                    
+                    <div id="game-over-screen" hidden style="text-align: center;">
+                        <h3 id="game-over-title" style="font-size: 1.8rem; margin-bottom: 1rem;">Fim de Jogo!</h3>
+                        <p id="game-over-text" style="margin-bottom: 1.5rem;"></p>
+                        <button id="btn-restart-game" class="btn-primary" style="background: #f57c00;">Jogar Novamente</button>
                     </div>
                 </div>
             </div>
