@@ -1,175 +1,76 @@
-// Base de conhecimento para o Chatbot
-const aiKnowledge = {
-    definicao: "O agronegócio é a integração de toda a cadeia produtiva rural, desde insumos e maquinários até a colheita, industrialização e venda.",
-    impacto: "Os impactos severos incluem degradação de solos, desmatamento para pastagem, e o uso de químicos contaminantes em ecossistemas hídricos.",
-    atitudes: "Atitudes essenciais envolvem o uso de agricultura de precisão, sistemas integrados ILPF, e a escolha por alimentos locais com certificação verde."
-};
-
-// Executa assim que a página carregar
-document.addEventListener("DOMContentLoaded", () => {
-    initPageNavigation();
-    initCarouselLogic();
-    initCalculadora();
-    initAiChatLogic();
-    initAccessibility();
-});
-
-// 1. SISTEMA DE NAVEGAÇÃO (Aba Ativa / Esconder as outras)
-function initPageNavigation() {
-    // Seleciona todos os botões que possuem o atributo data-target
-    const navButtons = document.querySelectorAll("[data-target]");
-    
-    navButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            e.preventDefault();
-            const targetId = button.getAttribute("data-target");
-            const targetPage = document.getElementById(targetId);
-
-            if (targetPage) {
-                // Oculta todas as páginas do site
-                document.querySelectorAll(".site-page").forEach(page => {
-                    page.setAttribute("hidden", "");
-                });
-                
-                // Mostra a página que foi clicada
-                targetPage.removeAttribute("hidden");
-
-                // Atualiza o visual do menu superior (botão ativo)
-                document.querySelectorAll(".nav-links .nav-btn").forEach(btn => {
-                    btn.classList.remove("active");
-                    if(btn.getAttribute("data-target") === targetId) {
-                        btn.classList.add("active");
-                    }
-                });
-
-                // Joga a tela para o topo suavemente
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-    });
-
-    // Clique na Logo leva para o Início
-    const logoHome = document.getElementById("logo-home");
-    if (logoHome) {
-        logoHome.onclick = (e) => {
-            e.preventDefault();
-            const btnInicio = document.querySelector('.nav-btn[data-target="page-inicio"]');
-            if (btnInicio) btnInicio.click();
-        };
-    }
+:root {
+    --primary: #2e7d32;
+    --secondary: #1565c0;
+    --bg-main: #f4f7f4;
+    --bg-card: #ffffff;
+    --text-main: #212121;
+    --border-color: #e0e0e0;
+    --radius: 8px;
+    --transition: all 0.3s ease;
 }
 
-// 2. LOGICA DO CARROSSEL
-function initCarouselLogic() {
-    const track = document.getElementById("carousel-track");
-    const prevBtn = document.getElementById("prev-slide");
-    const nextBtn = document.getElementById("next-slide");
-    let slideIdx = 0;
-
-    if (track && prevBtn && nextBtn) {
-        const totalSlides = track.querySelectorAll(".carousel-item").length;
-        
-        if (totalSlides > 0) {
-            nextBtn.onclick = () => { 
-                slideIdx = (slideIdx + 1) % totalSlides; 
-                track.style.transform = `translateX(-${slideIdx * 100}%)`; 
-            };
-            prevBtn.onclick = () => { 
-                slideIdx = (slideIdx - 1 + totalSlides) % totalSlides; 
-                track.style.transform = `translateX(-${slideIdx * 100}%)`; 
-            };
-        }
-    }
+body.high-contrast {
+    --bg-main: #000000;
+    --bg-card: #111111;
+    --text-main: #ffffff;
+    --border-color: #ffffff;
+    --primary: #ffff00;
+    --secondary: #00ffff;
 }
 
-// 3. LOGICA DA CALCULADORA
-function initCalculadora() {
-    const calcForm = document.getElementById("calc-form");
-    if (calcForm) {
-        calcForm.onsubmit = (e) => {
-            e.preventDefault();
-            const carneVal = document.getElementById("carne") ? parseFloat(document.getElementById("carne").value) : 0;
-            const despVal = document.getElementById("desperdicio") ? parseFloat(document.getElementById("desperdicio").value) : 0;
-            const total = carneVal + despVal;
-            
-            const resBox = document.getElementById("calc-result");
-            const resText = document.getElementById("result-text");
-            
-            if (resBox && resText) {
-                resBox.removeAttribute("hidden");
-                resText.textContent = total >= 45 ? "Pegada Ecológica Elevada 🚨 (Ajuste suas atitudes!)" : "Pegada Ecológica Baixa 🌱 (Excelente impacto!)";
-                resBox.scrollIntoView({ behavior: 'smooth' });
-            }
-        };
-    }
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-main); color: var(--text-main); font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; }
 
-// 4. LOGICA DO CHATBOT (ABRIR, FECHAR E RESPONDER)
-function initAiChatLogic() {
-    const toggle = document.getElementById("chat-toggle");
-    const chatWin = document.getElementById("chat-window");
-    const closeBtn = document.getElementById("chat-close");
-    const form = document.getElementById("chat-form-element");
-    const inp = document.getElementById("chat-input");
-    const msgArea = document.getElementById("chat-messages");
+.main-header { background: var(--bg-card); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+.header-container { max-width: 1200px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.6rem; font-weight: bold; color: var(--text-main); text-decoration: none; }
+.logo span { color: var(--primary); }
 
-    if (toggle && chatWin) {
-        // Abre / Fecha clicando no botão flutuante
-        toggle.onclick = () => {
-            chatWin.hidden = !chatWin.hidden;
-        };
-        
-        // Fecha clicando no X
-        if (closeBtn) {
-            closeBtn.onclick = (e) => {
-                e.stopPropagation(); // Evita conflitos de clique
-                chatWin.hidden = true;
-            };
-        }
-        
-        // Envio de mensagens
-        if (form && inp && msgArea) {
-            form.onsubmit = (e) => {
-                e.preventDefault();
-                const query = inp.value.trim().toLowerCase();
-                if (!query) return;
+.nav-links { display: flex; list-style: none; gap: 1rem; }
+.nav-btn { background: none; border: none; font-size: 1rem; font-weight: bold; color: var(--text-main); cursor: pointer; padding: 5px 0; border-bottom: 2px solid transparent; transition: var(--transition); }
+.nav-btn.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
 
-                msgArea.innerHTML += `<div class="msg user-msg">${inp.value}</div>`;
-                inp.value = "";
-                msgArea.scrollTop = msgArea.scrollHeight;
+.site-page { animation: fadeIn 0.3s ease-in-out; }
+.site-page[hidden] { display: none !important; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-                setTimeout(() => {
-                    let reply = "Não captei. Use palavras chave como 'definição', 'impacto' ou 'atitudes'.";
-                    for (let key in aiKnowledge) {
-                        if (query.includes(key)) { reply = aiKnowledge[key]; break; }
-                    }
-                    msgArea.innerHTML += `<div class="msg bot-msg">${reply}</div>`;
-                    msgArea.scrollTop = msgArea.scrollHeight;
-                }, 400);
-            };
-        }
-    }
-}
+.section-title { text-align: center; margin: 2rem 0; font-size: 2rem; }
+.knowledge-section { max-width: 800px; margin: 0 auto; padding: 1rem; }
+.hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/1200/400'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 5rem 1rem; border-radius: var(--radius); margin: 1rem; }
+.hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.btn-primary { background: var(--primary); color: #fff; padding: 12px 24px; border: none; border-radius: var(--radius); cursor: pointer; font-weight: bold; font-size: 1rem; display: inline-block; text-decoration: none; text-align: center;}
 
-// 5. FERRAMENTAS DE ACESSIBILIDADE
-function initAccessibility() {
-    const btnContrast = document.getElementById("btn-contrast");
-    if (btnContrast) {
-        btnContrast.onclick = () => document.body.classList.toggle("high-contrast");
-    }
-    
-    let fontSize = 100;
-    const btnIncrease = document.getElementById("btn-font-increase");
-    const btnDecrease = document.getElementById("btn-font-decrease");
-    
-    if (btnIncrease) {
-        btnIncrease.onclick = () => { 
-            if(fontSize < 130) { fontSize += 10; document.documentElement.style.fontSize = fontSize + "%"; } 
-        };
-    }
-    if (btnDecrease) {
-        btnDecrease.onclick = () => { 
-            if(fontSize > 90) { fontSize -= 10; document.documentElement.style.fontSize = fontSize + "%"; } 
-        };
-    }
-}
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; }
+.card, .tab-panel { background: var(--bg-card); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color); margin-bottom: 1rem; }
+.metric-card { text-align: center; border-top: 5px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 0.5rem;}
+.metric-number { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; }
+
+.vertical-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.vertical-form select { padding: 12px; border-radius: var(--radius); border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-size: 1rem; }
+.result-box { margin-top: 2rem; padding: 1.5rem; background: var(--primary); color: #fff; border-radius: var(--radius); text-align: center; }
+
+.carousel-container { max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; }
+.carousel { display: flex; transition: var(--transition); }
+.carousel-item { min-width: 100%; padding: 2.5rem; text-align: center; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); }
+.carousel-controls { display: flex; justify-content: space-between; margin-top: 0.5rem; }
+.carousel-controls button { background: var(--primary); color: #fff; border: none; padding: 8px 16px; cursor: pointer; border-radius: var(--radius); font-weight: bold; }
+
+.chat-bot-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+.chat-toggle-btn { background: var(--primary); color: #fff; border: none; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.chat-window { width: 300px; height: 400px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); position: absolute; bottom: 70px; right: 0; display: flex; flex-direction: column; }
+.chat-header { background: var(--primary); color: #fff; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+.chat-header button { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+.chat-messages { flex: 1; overflow-y: auto; padding: 10px; background: #eee; display: flex; flex-direction: column; gap: 8px; }
+.msg { padding: 8px 12px; border-radius: 5px; max-width: 85%; font-size: 0.9rem; }
+.user-msg { background: var(--primary); color: #fff; align-self: flex-end; }
+.bot-msg { background: #fff; color: #000; align-self: flex-start; border: 1px solid var(--border-color); }
+.chat-form { display: flex; border-top: 1px solid var(--border-color); }
+.chat-form input { flex: 1; padding: 12px; border: none; outline: none; background: var(--bg-card); color: var(--text-main); }
+.chat-form button { background: var(--secondary); color: #fff; border: none; padding: 0 15px; cursor: pointer; }
+
+.game-btn { background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: var(--radius); text-align: left; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
+.game-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+.accessibility-bar { background: #111111; padding: 6px; display: flex; justify-content: flex-end; gap: 10px; }
+.accessibility-bar button { background: none; color: #fff; border: 1px solid #fff; padding: 3px 12px; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
+.main-footer { background-color: #1a1a1a; color: #fff; text-align: center; padding: 2rem; margin-top: 2rem; }
