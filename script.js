@@ -1,8 +1,8 @@
-// Banco de respostas do chat local
+// Banco de respostas do chat local com dados baseados em relatórios da FAO e Embrapa
 const aiKnowledge = {
-    definicao: "O agronegócio é a integração de toda a cadeia produtiva rural, desde insumos e maquinários até a colheita, industrialização e venda.",
-    impacto: "Os impactos severos incluem degradação de solos, desmatamento para pastagem, e o uso de químicos contaminantes em ecossistemas hídricos.",
-    atitudes: "Atitudes essenciais envolvem o uso de agricultura de precisão, sistemas integrados ILPF, e a escolha por alimentos locais com certificação verde."
+    definicao: "O agronegócio engloba três macrossetores: antes da porteira (insumos e biotecnologia), dentro da porteira (atividades agropecuárias) e depois da porteira (agroindústria, logística e distribuição).",
+    impacto: "De acordo com o IPCC, os principais impactos são as emissões de metano por fermentação entérica na pecuária, óxido nitroso via fertilizantes sintéticos e perda de biodiversidade pelo desmatamento.",
+    atitudes: "Práticas eficazes de mitigação incluem os sistemas ILPF, manejo de bioinsumos biológicos para substituir agroquímicos e adoção de telemetria na agricultura de precisão."
 };
 
 // Variáveis de Controle do Minigame
@@ -15,22 +15,22 @@ const gameStages = [
     {
         text: "Estágio 1: Pragas atacaram sua grande plantação de soja. Qual insumo você vai comprar para resolver?",
         options: [
-            { text: "Comprar pesticidas químicos tradicionais (Barato, mas polui a água)", money: -15, eco: -25, isEco: false },
+            { text: "Comprar pesticidas químicos tradicionais (Barato, mas polui os lençóis freáticos)", money: -15, eco: -25, isEco: false },
             { text: "Investir em bio-defensivos e drones de precisão (Mais caro, mas ecológico)", money: -40, eco: +5, isEco: true }
         ]
     },
     {
         text: "Estágio 2: Você precisa expandir a área de pastagem para o gado da sua agroindústria. O que fazer?",
         options: [
-            { text: "Derrubar uma parte da mata nativa da fazenda (Custo zero, mas gera desmatamento)", money: 0, eco: -40, isEco: false },
-            { text: "Implementar o sistema de Integração Lavoura-Pecuária-Floresta (Ganha bônus de sustentabilidade)", money: -30, eco: +20, isEco: true }
+            { text: "Derrubar uma parte da mata nativa da fazenda (Custo zero imediato, mas causa desmatamento severo)", money: 0, eco: -40, isEco: false },
+            { text: "Implementar o sistema de Integração Lavoura-Pecuária-Floresta (Usa melhor a terra e mantém árvores)", money: -30, eco: +20, isEco: true }
         ]
     },
     {
-        text: "Estágio 3: O maquinário da sua indústria está antigo e gastando muito diesel, liberando muito CO₂.",
+        text: "Estágio 3: O maquinário da sua indústria está antigo e gastando muito diesel, liberando toneladas de CO₂.",
         options: [
-            { text: "Ignorar e manter funcionando assim mesmo (Economiza dinheiro agora)", money: +20, eco: -20, isEco: false },
-            { text: "Financiar novos tratores elétricos e biocombustíveis (Gasto alto, reduz emissões)", money: -50, eco: +20, isEco: true }
+            { text: "Ignorar e manter funcionando assim mesmo (Economiza capital agora)", money: +20, eco: -25, isEco: false },
+            { text: "Financiar novos tratores elétricos e biocombustíveis (Gasto alto, zera emissões de carbono)", money: -50, eco: +20, isEco: true }
         ]
     }
 ];
