@@ -38,11 +38,11 @@ body { background: var(--bg-main); color: var(--text-main); font-family: system-
 .knowledge-section { max-width: 800px; margin: 0 auto; padding: 1rem; }
 .hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/1200/400'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 5rem 1rem; border-radius: var(--radius); margin: 1rem; }
 .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-.btn-primary { background: var(--primary); color: #fff; padding: 12px 24px; border: none; border-radius: var(--radius); cursor: pointer; font-weight: bold; font-size: 1rem; display: inline-block; text-decoration: none; }
+.btn-primary { background: var(--primary); color: #fff; padding: 12px 24px; border: none; border-radius: var(--radius); cursor: pointer; font-weight: bold; font-size: 1rem; display: inline-block; text-decoration: none; text-align: center;}
 
 .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; max-width: 1200px; margin: 0 auto; }
 .card, .tab-panel { background: var(--bg-card); padding: 2rem; border-radius: var(--radius); border: 1px solid var(--border-color); margin-bottom: 1rem; }
-.metric-card { text-align: center; border-top: 5px solid var(--primary); }
+.metric-card { text-align: center; border-top: 5px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; align-items: center; gap: 0.5rem;}
 .metric-number { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; }
 
 .vertical-form { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -67,6 +67,9 @@ body { background: var(--bg-main); color: var(--text-main); font-family: system-
 .chat-form { display: flex; border-top: 1px solid var(--border-color); }
 .chat-form input { flex: 1; padding: 12px; border: none; outline: none; background: var(--bg-card); color: var(--text-main); }
 .chat-form button { background: var(--secondary); color: #fff; border: none; padding: 0 15px; cursor: pointer; }
+
+.game-btn { background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); padding: 12px; border-radius: var(--radius); text-align: left; cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: var(--transition); }
+.game-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
 
 .accessibility-bar { background: #111111; padding: 6px; display: flex; justify-content: flex-end; gap: 10px; }
 .accessibility-bar button { background: none; color: #fff; border: 1px solid #fff; padding: 3px 12px; cursor: pointer; border-radius: 4px; font-size: 0.85rem; }
