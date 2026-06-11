@@ -9,7 +9,7 @@ const aiKnowledge = {
 let gameMoney = 100;
 let gameEco = 100;
 let currentGameStage = 0;
-let ecoChoicesCount = 0; // Conta quantas opções sustentáveis o jogador escolheu
+let ecoChoicesCount = 0; 
 
 const gameStages = [
     {
@@ -35,7 +35,6 @@ const gameStages = [
     }
 ];
 
-// Disparador principal ao carregar o DOM
 document.addEventListener("DOMContentLoaded", () => {
     initPageNavigation();
     initCarouselLogic();
@@ -141,7 +140,6 @@ function initGameLogic() {
         if(moneyDisplay) moneyDisplay.textContent = gameMoney;
         if(ecoDisplay) ecoDisplay.textContent = gameEco;
         
-        // Derrotas antes do fim dos estágios
         if (gameMoney <= 0) {
             endGame(false, "💸 Falência total! Você focou tanto em salvar o planeta ou investir caro que seu caixa zerou. O agronegócio sustentável precisa ser economicamente viável para continuar existindo. Tente planejar seus gastos melhor na próxima rodada!");
         } else if (gameEco <= 0) {
@@ -151,7 +149,6 @@ function initGameLogic() {
 
     function loadStage() {
         if (currentGameStage >= gameStages.length) {
-            // Análise do comportamento do jogador se ele vencer sobrevivendo a todas as fases
             if (ecoChoicesCount === 0) {
                 endGame(true, "⚠️ Você venceu raspando! Suas finanças estão ótimas, mas você escolheu o caminho mais agressivo para o planeta em todas as rodadas. Sua Sustentabilidade despencou. Lembre-se: no agronegócio moderno, ignorar o impacto ambiental gera prejuízos de longo prazo!");
             } else if (ecoChoicesCount === gameStages.length) {
@@ -208,7 +205,7 @@ function initGameLogic() {
     loadStage();
 }
 
-// 5. SISTEMA DO CHATBOT (ABRE, FECHA NO X, E RESPONDE)
+// 5. SISTEMA DO CHATBOT (CORRIGIDO PARA SUCESSO NO FECHAMENTO)
 function initAiChatLogic() {
     const toggle = document.getElementById("chat-toggle");
     const chatWin = document.getElementById("chat-window");
@@ -217,7 +214,6 @@ function initAiChatLogic() {
     const inp = document.getElementById("chat-input");
     const msgArea = document.getElementById("chat-messages");
 
-    // Abre e fecha ao clicar no botão flutuante principal usando o display do CSS
     if (toggle && chatWin) {
         toggle.onclick = (e) => { 
             e.preventDefault();
@@ -229,16 +225,14 @@ function initAiChatLogic() {
         };
     }
 
-    // Força o fechamento imediato ao clicar no X
     if (closeBtn && chatWin) {
         closeBtn.onclick = (e) => {
             e.preventDefault();
-            e.stopPropagation(); // Trava a propagação do clique para o botão de trás
+            e.stopPropagation(); 
             chatWin.style.display = "none";
         };
     }
 
-    // Envio de mensagens
     if (form && inp && msgArea) {
         form.onsubmit = (e) => {
             e.preventDefault();
