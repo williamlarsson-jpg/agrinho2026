@@ -1,65 +1,94 @@
 // ==========================================
-// 1. DATA STORES (Dados Dinâmicos)
+// 1. ARRAYS DE DADOS E ESTRUTURAS DINÂMICAS
 // ==========================================
-const pillarsData = [
-    { title: "Produção Local", desc: "Apoio direto ao pequeno produtor, reduzindo a pegada de carbono do transporte urbano." },
-    { title: "Desperdício Zero", desc: "Sistemas inteligentes de colheita e distribuição que evitam perdas na cadeia produtiva." },
-    { title: "Tecnologia Verde", desc: "Uso de IA e IoT para otimizar o uso da água e eliminar defensivos químicos nocivos." }
+
+// Dados Expandidos da Central de Conhecimento (Abas)
+const knowledgeSections = [
+    {
+        id: "o-que-e",
+        title: "O que é o Agronegócio?",
+        content: "O agronegócio não engloba apenas a plantação do alimento na terra. Ele representa toda a cadeia econômica produtiva interconectada: iniciando pela indústria de insumos (maquinários, adubos e tecnologia), passando pelas atividades de cultivo no campo, e finalizando nas etapas de processamento industrial, logística, comercialização e distribuição até a sua mesa."
+    },
+    {
+        id: "impactos",
+        title: "Impactos Socioambientais Críticos",
+        content: "A expansão irrestrita do agronegócio tradicional sem critérios ecológicos severos provoca degradações globais alarmantes como:",
+        list: [
+            "Desmatamento em larga escala e conversão de florestas nativas em pastagens.",
+            "Consumo exacerbado e desperdício direto de recursos hídricos potáveis.",
+            "Erosão severa, perda de nutrientes fundamentais e desertificação do solo.",
+            "Poluição química de rios e lençóis freáticos por uso massivo de agrotóxicos."
+        ]
+    },
+    {
+        id: "atitudes",
+        title: "Atitudes e Práticas de Transformação",
+        content: "Mudar o rumo do setor exige ações tecnológicas e escolhas conscientes:",
+        list: [
+            "**Agricultura de Precisão:** Sensores IoT monitoram o solo reduzindo água e insumos a níveis mínimos.",
+            "**Sistemas Integrados (ILPF):** Alternar Lavoura, Pecuária e Floresta regenera a terra de forma natural.",
+            "**Consumo Regional:** Comprar de micro e pequenos produtores elimina a pegada de CO2 dos transportes.",
+            "**Certificação Certificada:** Exigir selos que comprovem práticas de desmatamento zero."
+        ]
+    }
 ];
 
+// Dados das Tecnologias do Carrossel
 const carouselData = [
-    { title: "Agricultura Regenerativa", text: "Técnicas que recuperam a saúde do solo e promovem a biodiversidade local." },
-    { title: "Crédito de Carbono", text: "Incentivos financeiros para produtores que mantêm florestas nativas de pé." },
-    { title: "Rastreabilidade por Blockchain", text: "Saiba exatamente de onde veio o seu alimento, do plantio até a sua mesa." }
+    { title: "Manejo Agroflorestal", text: "Plantar culturas agrícolas em consórcio com árvores nativas, recuperando biomas." },
+    { title: "Inteligência Artificial no Campo", text: "Algoritmos que analisam imagens de drones para detectar focos de pragas isoladas." },
+    { title: "Rastreabilidade Blockchain", text: "Armazenamento imutável de dados para garantir a origem sustentável do produto." }
 ];
 
+// Dados dos Cards de Métricas
 const metricsData = [
-    { value: "-40%", text: "Uso de Água Potável" },
-    { value: "+25%", text: "Renda Média do Produtor" },
-    { value: "0%", text: "Uso de Desmatamento" }
+    { value: "-40%", text: "Redução no Desperdício de Água" },
+    { value: "+30%", text: "Preservação de Áreas Nativas" },
+    { value: "100%", text: "Rastreabilidade Auditada" }
 ];
 
-const faqData = [
-    { q: "O que é consumo consciente no agronegócio?", a: "É a escolha por produtos que respeitam os limites ambientais, garantem condições justas de trabalho no campo e evitam o desperdício." },
-    { q: "Como a tecnologia ajuda na sustentabilidade?", a: "Sensores de umidade evitam o desperdício de água, enquanto drones identificam pragas cirurgicamente, reduzindo o uso de insumos químicos." }
-];
-
-// Base de Conhecimento do Chatbot de IA
+// Dicionário de Termos e Conhecimento da IA do Chat
 const aiKnowledge = {
-    credito: "Nosso programa de crédito de carbono recompensa produtores que mantêm áreas de preservação ambiental intactas.",
-    tecnologia: "Utilizamos inteligência artificial em drones e sensores IoT para monitorar o solo e aplicar água e bioinsumos apenas onde é estritamente necessário.",
-    desperdicio: "Com nossa logística inteligente rastreada por blockchain, conseguimos mitigar perdas de alimentos em até 80% do campo à mesa.",
-    consumo: "Consumir consciente significa comprar de produtores certificados que não utilizam áreas desmatadas e garantem direitos trabalhistas justos."
+    definicao: "O agronegócio é a integração de toda a cadeia produtiva rural, desde insumos e maquinários até a colheita, industrialização e venda.",
+    impacto: "Os impactos severos incluem degradação de solos, desmatamento para pastagem, e o uso de químicos contaminantes em ecossistemas de água doce.",
+    atitudes: "Atitudes essenciais envolvem o uso de agricultura regenerativa, sistemas integrados ILPF, e a exigência de alimentos com rastreabilidade auditada por selos verdes."
 };
 
 // ==========================================
-// 2. INICIALIZAÇÃO
+// 2. INICIALIZADOR GLOBAL (DOM READY)
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-    renderPillars();
+    // Injeções Iniciais
+    renderKnowledgePanels();
     renderCarousel();
     renderMetrics();
-    renderFAQ();
-    initAccessibility();
+
+    // Motores de Comportamento e UX
+    initTabsLogic();
     initCarouselLogic();
-    initAccordionLogic();
-    initScrollReveal();
     initAiChatLogic();
+    initAccessibility();
+    initScrollReveal();
 });
 
-// Renderizadores Dinâmicos
-function renderPillars() {
-    document.getElementById("pillars-grid").innerHTML = pillarsData.map(item => `
-        <article class="card">
-            <h3>${item.title}</h3>
-            <p>${item.desc}</p>
+// ==========================================
+// 3. FUNÇÕES DE RENDERIZAÇÃO DINÂMICA
+// ==========================================
+function renderKnowledgePanels() {
+    const container = document.getElementById("knowledge-panels-container");
+    container.innerHTML = knowledgeSections.map((sec, index) => `
+        <article id="panel-${sec.id}" class="tab-panel" role="tabpanel" aria-labelledby="tab-${sec.id}" ${index > 0 ? "hidden" : ""}>
+            <h3>${sec.title}</h3>
+            <p>${sec.content}</p>
+            ${sec.list ? `<ul>${sec.list.map(li => `<li>${li}</li>`).join('')}</ul>` : ""}
         </article>
     `).join('');
 }
 
 function renderCarousel() {
-    document.getElementById("carousel-track").innerHTML = carouselData.map((item, i) => `
-        <div class="carousel-item" role="group" aria-roledescription="slide" aria-label="${i+1} de ${carouselData.length}">
+    const track = document.getElementById("carousel-track");
+    track.innerHTML = carouselData.map((item, i) => `
+        <div class="carousel-item" role="group" aria-label="Slide ${i+1} de ${carouselData.length}">
             <h3>${item.title}</h3>
             <p>${item.text}</p>
         </div>
@@ -67,7 +96,8 @@ function renderCarousel() {
 }
 
 function renderMetrics() {
-    document.getElementById("metrics-container").innerHTML = metricsData.map(item => `
+    const container = document.getElementById("metrics-container");
+    container.innerHTML = metricsData.map(item => `
         <div class="card metric-card">
             <span class="metric-number">${item.value}</span>
             <p>${item.text}</p>
@@ -75,21 +105,48 @@ function renderMetrics() {
     `).join('');
 }
 
-function renderFAQ() {
-    document.getElementById("faq-accordion").innerHTML = faqData.map((item, i) => `
-        <div class="accordion-item">
-            <button class="accordion-header" id="faq-header-${i}" aria-expanded="false" aria-controls="faq-content-${i}">
-                ${item.q} <span class="icon" aria-hidden="true">+</span>
-            </button>
-            <div id="faq-content-${i}" class="accordion-content" role="region" aria-labelledby="faq-header-${i}">
-                <p style="padding: 1rem 0;">${item.a}</p>
-            </div>
-        </div>
-    `).join('');
+// ==========================================
+// 4. LÓGICA DE COMPONENTES DE INTERAÇÃO
+// ==========================================
+
+// Sistema de Abas Acessível
+function initTabsLogic() {
+    const tabs = document.querySelectorAll('.tab-list button');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const targetPanelId = tab.getAttribute('aria-controls');
+
+            tabs.forEach(t => {
+                t.setAttribute('aria-selected', 'false');
+                t.setAttribute('tabindex', '-1');
+            });
+            tab.setAttribute('aria-selected', 'true');
+            tab.setAttribute('tabindex', '0');
+
+            document.querySelectorAll('.tab-panel').forEach(p => p.setAttribute('hidden', ''));
+            document.getElementById(targetPanelId).removeAttribute('hidden');
+        });
+    });
+}
+
+// Carrossel
+function initCarouselLogic() {
+    const track = document.getElementById("carousel-track");
+    let index = 0;
+
+    document.getElementById("next-slide").addEventListener("click", () => {
+        index = (index + 1) % carouselData.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+    });
+
+    document.getElementById("prev-slide").addEventListener("click", () => {
+        index = (index - 1 + carouselData.length) % carouselData.length;
+        track.style.transform = `translateX(-${index * 100}%)`;
+    });
 }
 
 // ==========================================
-// 3. COMPONENTE: CAMADA DE INTELIGÊNCIA (IA CHATBOT)
+// 5. CAMADA DE INTELIGÊNCIA ARTIFICIAL (BOT)
 // ==========================================
 function initAiChatLogic() {
     const toggleBtn = document.getElementById("chat-toggle");
@@ -99,40 +156,27 @@ function initAiChatLogic() {
     const input = document.getElementById("chat-input");
     const messagesContainer = document.getElementById("chat-messages");
 
-    // Abrir/Fechar Janela
     toggleBtn.addEventListener("click", () => {
-        const isHidden = windowChat.hasAttribute("hidden");
-        if (isHidden) {
-            windowChat.removeAttribute("hidden");
-            toggleBtn.setAttribute("aria-expanded", "true");
-            input.focus();
-        } else {
-            windowChat.setAttribute("hidden", "");
-            toggleBtn.setAttribute("aria-expanded", "false");
-        }
+        windowChat.removeAttribute("hidden");
+        toggleBtn.setAttribute("aria-expanded", "true");
+        input.focus();
     });
 
     closeBtn.addEventListener("click", () => {
         windowChat.setAttribute("hidden", "");
         toggleBtn.setAttribute("aria-expanded", "false");
-        toggleBtn.focus();
     });
 
-    // Processamento da mensagem enviado pelo usuário
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         const query = input.value.trim().toLowerCase();
         if (!query) return;
 
-        // Adiciona mensagem do usuário na tela
         appendMessage(input.value, "user-msg");
         input.value = "";
 
-        // Resposta Simulado da IA (Delay UX de digitação)
         setTimeout(() => {
-            let reply = "Desculpe, ainda estou aprendendo sobre esse tópico. Tente palavras-chave como 'crédito', 'tecnologia' ou 'consumo'.";
-            
-            // Busca simplificada por palavra-chave
+            let reply = "Perdoe-me, não entendi o termo completo. Tente usar palavras-chave como 'definição', 'impacto' ou 'atitudes'.";
             for (let key in aiKnowledge) {
                 if (query.includes(key)) {
                     reply = aiKnowledge[key];
@@ -140,7 +184,7 @@ function initAiChatLogic() {
                 }
             }
             appendMessage(reply, "bot-msg");
-        }, 600);
+        }, 500);
     });
 
     function appendMessage(text, className) {
@@ -153,40 +197,40 @@ function initAiChatLogic() {
 }
 
 // ==========================================
-// 4. LÓGICAS DE COMPONENTES E ACESSIBILIDADE
+// 6. ACESSIBILIDADE E ANIMAÇÕES DE ENTRADA
 // ==========================================
-function initCarouselLogic() {
-    const track = document.getElementById("carousel-track");
-    let index = 0;
-    document.getElementById("next-slide").addEventListener("click", () => { index = (index + 1) % carouselData.length; track.style.transform = `translateX(-${index * 100}%)`; });
-    document.getElementById("prev-slide").addEventListener("click", () => { index = (index - 1 + carouselData.length) % carouselData.length; track.style.transform = `translateX(-${index * 100}%)`; });
-}
-
-function initAccordionLogic() {
-    document.querySelectorAll(".accordion-header").forEach(header => {
-        header.addEventListener("click", () => {
-            const isExpanded = header.getAttribute("aria-expanded") === "true";
-            const content = document.getElementById(header.getAttribute("aria-controls"));
-            header.setAttribute("aria-expanded", !isExpanded);
-            content.style.maxHeight = !isExpanded ? content.scrollHeight + "px" : null;
-            header.querySelector(".icon").textContent = !isExpanded ? "−" : "+";
-        });
-    });
-}
-
 function initAccessibility() {
-    let baseSize = 100;
+    let baseFontSizePercentage = 100;
+    
     document.getElementById("btn-contrast").addEventListener("click", (e) => {
         const active = document.body.classList.toggle("high-contrast");
         e.target.setAttribute("aria-pressed", active);
     });
-    document.getElementById("btn-font-increase").addEventListener("click", () => { if(baseSize < 130) { baseSize += 10; document.documentElement.style.fontSize = `${baseSize}%`; } });
-    document.getElementById("btn-font-decrease").addEventListener("click", () => { if(baseSize > 90) { baseSize -= 10; document.documentElement.style.fontSize = `${baseSize}%`; } });
+
+    document.getElementById("btn-font-increase").addEventListener("click", () => {
+        if(baseFontSizePercentage < 130) {
+            baseFontSizePercentage += 10;
+            document.documentElement.style.fontSize = `${baseFontSizePercentage}%`;
+        }
+    });
+
+    document.getElementById("btn-font-decrease").addEventListener("click", () => {
+        if(baseFontSizePercentage > 90) {
+            baseFontSizePercentage -= 10;
+            document.documentElement.style.fontSize = `${baseFontSizePercentage}%`;
+        }
+    });
 }
 
 function initScrollReveal() {
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add("active"); observer.unobserve(entry.target); } });
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add("active");
+                observer.unobserve(entry.target);
+            }
+        });
     }, { threshold: 0.1 });
+
     document.querySelectorAll(".scroll-reveal").forEach(el => observer.observe(el));
 }
