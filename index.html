@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroConsciente | Futuro Sustentável</title>
+    <title>AgroConsciente | Futuro Sustentável com IA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,6 +21,7 @@
                 <ul class="nav-links">
                     <li><a href="#sobre">Sobre</a></li>
                     <li><a href="#pilares">Pilares</a></li>
+                    <li><a href="#metricas">Métricas</a></li>
                     <li><a href="#faq">Dúvidas</a></li>
                 </ul>
             </nav>
@@ -31,7 +32,7 @@
         <section class="hero-section" aria-labelledby="hero-title">
             <div class="hero-content scroll-reveal">
                 <h1 id="hero-title">O Futuro da Agricultura é Consciente</h1>
-                <p>Unindo tecnologia de ponta, preservação ambiental e respeito ao produtor para alimentar o mundo de forma sustentável.</p>
+                <p>Unindo inteligência artificial, preservação ambiental e respeito ao produtor para alimentar o mundo de forma sustentável.</p>
                 <a href="#pilares" class="btn-primary">Conheça Nossos Pilares</a>
             </div>
         </section>
@@ -39,8 +40,7 @@
         <section id="sobre" class="about-section scroll-reveal" aria-labelledby="about-title">
             <h2 id="about-title" class="section-title">Inovações no Campo</h2>
             <div class="carousel-container">
-                <div class="carousel" id="carousel-track" role="region" aria-live="polite" aria-label="Carrossel de inovações">
-                    </div>
+                <div class="carousel" id="carousel-track" role="region" aria-live="polite" aria-label="Carrossel de inovações"></div>
                 <div class="carousel-controls">
                     <button id="prev-slide" aria-label="Slide anterior">❮</button>
                     <button id="next-slide" aria-label="Próximo slide">❯</button>
@@ -50,19 +50,41 @@
 
         <section id="pilares" class="pillars-section scroll-reveal" aria-labelledby="pillars-title">
             <h2 id="pillars-title" class="section-title">Nossos Pilares de Consumo</h2>
-            <div class="grid-container" id="pillars-grid">
-                </div>
+            <div class="grid-container" id="pillars-grid"></div>
+        </section>
+
+        <section id="metricas" class="metrics-section scroll-reveal" aria-labelledby="metrics-title">
+            <h2 id="metrics-title" class="section-title">Nosso Impacto em Números</h2>
+            <div class="metrics-grid" id="metrics-container"></div>
         </section>
 
         <section id="faq" class="faq-section scroll-reveal" aria-labelledby="faq-title">
             <h2 id="faq-title" class="section-title">Perguntas Frequentes</h2>
-            <div class="accordion-container" id="faq-accordion">
-                </div>
+            <div class="accordion-container" id="faq-accordion"></div>
         </section>
     </main>
 
+    <div class="chat-bot-container" role="complementary" aria-label="Assistente Virtual AgroIA">
+        <button id="chat-toggle" class="chat-toggle-btn" aria-expanded="false" aria-controls="chat-window">
+            <span class="chat-icon">🤖</span> Assistente AgroIA
+        </button>
+        <div id="chat-window" class="chat-window" hidden>
+            <div class="chat-header">
+                <h3>AgroIA</h3>
+                <button id="chat-close" aria-label="Fechar chat">✕</button>
+            </div>
+            <div id="chat-messages" class="chat-messages" aria-live="polite" aria-relevant="additions">
+                <div class="msg system-msg">Olá! Sou a AgroIA. Pergunte-me sobre "crédito", "tecnologia", "desperdício" ou "consumo".</div>
+            </div>
+            <form id="chat-form" class="chat-form">
+                <input type="text" id="chat-input" placeholder="Digite sua dúvida..." aria-label="Sua pergunta para a IA" required>
+                <button type="submit" aria-label="Enviar pergunta">Enviar</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="main-footer">
-        <p>&copy; 2026 AgroConsciente. Cultivando um amanhã melhor. Desenvolvido com foco em acessibilidade.</p>
+        <p>&copy; 2026 AgroConsciente. Cultivando um amanhã melhor e inteligente.</p>
     </footer>
 
     <script src="script.js"></script>
