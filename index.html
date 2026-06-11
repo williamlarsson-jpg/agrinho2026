@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroConsciente | Plataforma Unificada</title>
+    <title>AgroConsciente | Conteúdo Garantido</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
         <button id="btn-contrast" aria-pressed="false">🌓 Alto Contraste</button>
-        <button id="btn-font-increase" aria-label="Aumentar tamanho do texto">A+</button>
-        <button id="btn-font-decrease" aria-label="Diminuir tamanho do texto">A-</button>
+        <button id="btn-font-increase" aria-label="Aumentar texto">A+</button>
+        <button id="btn-font-decrease" aria-label="Diminuir texto">A-</button>
     </div>
 
     <header class="main-header">
         <div class="header-container">
-            <a href="#" class="logo" aria-label="AgroConsciente Home">Agro<span>Consciente</span></a>
+            <a href="#" class="logo">Agro<span>Consciente</span></a>
             <nav aria-label="Navegação Principal">
                 <ul class="nav-links">
                     <li><a href="#central-conhecimento">Conhecimento</a></li>
@@ -28,67 +28,117 @@
     </header>
 
     <main id="main-content">
-        <section class="hero-section" aria-labelledby="hero-title">
-            <div class="hero-content scroll-reveal">
-                <h1 id="hero-title">O Futuro da Agricultura é Consciente</h1>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>O Futuro da Agricultura é Consciente</h1>
                 <p>Navegue pela nossa plataforma e descubra o que é o agronegócio moderno, seus impactos no meio ambiente e quais atitudes transformam o amanhã.</p>
-                <a href="#central-conhecimento" class="btn-primary">Explorar Central de Conhecimento</a>
+                <a href="#central-conhecimento" class="btn-primary">Explorar Conhecimento</a>
             </div>
         </section>
 
-        <section id="central-conhecimento" class="knowledge-section scroll-reveal" aria-labelledby="knowledge-title">
-            <h2 id="knowledge-title" class="section-title">Central de Conhecimento</h2>
+        <section id="central-conhecimento" class="knowledge-section">
+            <h2 class="section-title">Central de Conhecimento</h2>
             
-            <div class="tab-list" role="tablist" aria-label="Tópicos sobre Agronegócio Sustentável">
+            <div class="tab-list" role="tablist" aria-label="Tópicos sobre Agronegócio">
                 <button id="tab-o-que-e" role="tab" aria-selected="true" aria-controls="panel-o-que-e" tabindex="0">O que é?</button>
                 <button id="tab-impactos" role="tab" aria-selected="false" aria-controls="panel-impactos" tabindex="-1">Impactos Ambientais</button>
                 <button id="tab-atitudes" role="tab" aria-selected="false" aria-controls="panel-atitudes" tabindex="-1">Atitudes Eficazes</button>
             </div>
 
             <div class="tab-panels" id="knowledge-panels-container">
-                </div>
+                <article id="panel-o-que-e" class="tab-panel" role="tabpanel" aria-labelledby="tab-o-que-e">
+                    <h3>O que é o Agronegócio?</h3>
+                    <p>O agronegócio não engloba apenas a plantação do alimento na terra. Ele representa toda a cadeia econômica produtiva interconectada: iniciando pela indústria de insumos (maquinários, adubos e tecnologia), passando pelas atividades de cultivo no campo, e finalizando nas etapas de processamento industrial, logística, comercialização e distribuição até a sua mesa.</p>
+                </article>
+
+                <article id="panel-impactos" class="tab-panel" role="tabpanel" aria-labelledby="tab-impactos" hidden>
+                    <h3>Impactos Socioambientais Críticos</h3>
+                    <p>A expansão irrestrita do agronegócio tradicional sem critérios ecológicos severos provoca degradações globais alarmantes como:</p>
+                    <ul>
+                        <li>Desmatamento em larga escala e conversão de florestas nativas em pastagens.</li>
+                        <li>Consumo exacerbado e desperdício direto de recursos hídricos potáveis.</li>
+                        <li>Erosão severa, perda de nutrientes fundamentais e desertificação do solo.</li>
+                        <li>Poluição química de rios e lençóis freáticos por uso massivo de agrotóxicos.</li>
+                    </ul>
+                </article>
+
+                <article id="panel-atitudes" class="tab-panel" role="tabpanel" aria-labelledby="tab-atitudes" hidden>
+                    <h3>Atitudes e Práticas de Transformação</h3>
+                    <p>Mudar o rumo do setor exige ações tecnológicas e escolhas conscientes:</p>
+                    <ul>
+                        <li><strong>Agricultura de Precisão:</strong> Sensores IoT monitoram o solo reduzindo água e insumos a níveis mínimos.</li>
+                        <li><strong>Sistemas Integrados (ILPF):</strong> Alternar Lavoura, Pecuária e Floresta regenera a terra de forma natural.</li>
+                        <li><strong>Consumo Regional:</strong> Comprar de micro e pequenos produtores elimina a pegada de CO2 dos transportes.</li>
+                        <li><strong>Certificação Certificada:</strong> Exigir selos que comprovem práticas de desmatamento zero.</li>
+                    </ul>
+                </article>
+            </div>
         </section>
 
-        <section id="sobre" class="about-section scroll-reveal" aria-labelledby="about-title">
-            <h2 id="about-title" class="section-title">Tecnologia Aplicada</h2>
+        <section id="sobre" class="about-section">
+            <h2 class="section-title">Tecnologia Aplicada</h2>
             <div class="carousel-container">
-                <div class="carousel" id="carousel-track" role="region" aria-live="polite" aria-label="Carrossel de práticas modernas">
+                <div class="carousel" id="carousel-track" role="region" aria-live="polite">
+                    <div class="carousel-item">
+                        <h3>Manejo Agroflorestal</h3>
+                        <p>Plantar culturas agrícolas em consórcio com árvores nativas, recuperando biomas.</p>
                     </div>
+                    <div class="carousel-item">
+                        <h3>Inteligência Artificial no Campo</h3>
+                        <p>Algoritmos que analisam imagens de drones para detectar focos de pragas isoladas.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <h3>Rastreabilidade Blockchain</h3>
+                        <p>Armazenamento imutável de dados para garantir a origem sustentável do produto.</p>
+                    </div>
+                </div>
                 <div class="carousel-controls">
-                    <button id="prev-slide" aria-label="Slide anterior">❮</button>
-                    <button id="next-slide" aria-label="Próximo slide">❯</button>
+                    <button id="prev-slide" aria-label="Anterior">❮</button>
+                    <button id="next-slide" aria-label="Próximo">❯</button>
                 </div>
             </div>
         </section>
 
-        <section id="metricas" class="metrics-section scroll-reveal" aria-labelledby="metrics-title">
-            <h2 id="metrics-title" class="section-title">Metas Ambientais Calculadas</h2>
+        <section id="metricas" class="metrics-section">
+            <h2 class="section-title">Metas Ambientais Calculadas</h2>
             <div class="metrics-grid" id="metrics-container">
+                <div class="card metric-card">
+                    <span class="metric-number">-40%</span>
+                    <p>Redução no Desperdício de Água</p>
                 </div>
+                <div class="card metric-card">
+                    <span class="metric-number">+30%</span>
+                    <p>Preservação de Áreas Nativas</p>
+                </div>
+                <div class="card metric-card">
+                    <span class="metric-number">100%</span>
+                    <p>Rastreabilidade Auditada</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <div class="chat-bot-container" role="complementary" aria-label="Assistente Virtual AgroIA">
         <button id="chat-toggle" class="chat-toggle-btn" aria-expanded="false" aria-controls="chat-window">
-            <span class="chat-icon">🤖</span> Assistente AgroIA
+            <span>🤖</span> Assistente AgroIA
         </button>
         <div id="chat-window" class="chat-window" hidden>
             <div class="chat-header">
                 <h3>AgroIA</h3>
-                <button id="chat-close" aria-label="Fechar janela de chat">✕</button>
+                <button id="chat-close" aria-label="Fechar chat">✕</button>
             </div>
-            <div id="chat-messages" class="chat-messages" aria-live="polite" aria-relevant="additions">
-                <div class="msg system-msg">Olá! Sou a inteligência artificial do AgroConsciente. Pergunte-me sobre "definição", "impacto" ou "atitudes"!</div>
+            <div id="chat-messages" class="chat-messages" aria-live="polite">
+                <div class="msg system-msg">Olá! Sou a AgroIA. Pergunte-me sobre "definição", "impacto" ou "atitudes"!</div>
             </div>
             <form id="chat-form" class="chat-form">
-                <input type="text" id="chat-input" placeholder="Digite sua dúvida aqui..." aria-label="Pergunta para o assistente" required>
-                <button type="submit" aria-label="Enviar mensagem">Enviar</button>
+                <input type="text" id="chat-input" placeholder="Digite sua dúvida..." required>
+                <button type="submit">Enviar</button>
             </form>
         </div>
     </div>
 
     <footer class="main-footer">
-        <p>&copy; 2026 AgroConsciente. Cultivando um ecossistema digital inclusivo e sustentável.</p>
+        <p>&copy; 2026 AgroConsciente. Cultivando conhecimento acessível.</p>
     </footer>
 
     <script src="script.js"></script>
