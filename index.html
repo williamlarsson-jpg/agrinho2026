@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroConsciente | Plataforma Unificada</title>
+    <title>AgroConsciente | Plataforma Completa</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="accessibility-bar" role="complementary" aria-label="Ferramentas de Acessibilidade">
+    <div class="accessibility-bar" role="complementary">
         <button id="btn-contrast">🌓 Alto Contraste</button>
         <button id="btn-font-increase">A+</button>
         <button id="btn-font-decrease">A-</button>
@@ -17,7 +17,7 @@
     <header class="main-header">
         <div class="header-container">
             <a href="#" class="logo" id="logo-home">Agro<span>Consciente</span></a>
-            <nav aria-label="Navegação Principal">
+            <nav>
                 <ul class="nav-links">
                     <li><button data-target="page-inicio" class="nav-btn active">Início</button></li>
                     <li><button data-target="page-glossario" class="nav-btn">Dicionário Verde</button></li>
@@ -42,7 +42,19 @@
                 <h2 class="section-title">Inovações no Campo</h2>
                 <div class="carousel-container">
                     <div class="carousel" id="carousel-track">
+                        <div class="carousel-item">
+                            <h3>Manejo Agroflorestal</h3>
+                            <p>Plantar culturas agrícolas em consórcio com árvores nativas, recuperando biomas.</p>
                         </div>
+                        <div class="carousel-item">
+                            <h3>Inteligência Artificial no Campo</h3>
+                            <p>Algoritmos que analisam imagens de drones para detectar focos de pragas isoladas.</p>
+                        </div>
+                        <div class="carousel-item">
+                            <h3>Rastreabilidade Blockchain</h3>
+                            <p>Armazenamento imutável de dados para garantir a origem sustentável do produto.</p>
+                        </div>
+                    </div>
                     <div class="carousel-controls">
                         <button id="prev-slide">❮</button>
                         <button id="next-slide">❯</button>
@@ -53,27 +65,40 @@
             <div class="knowledge-section">
                 <h2 class="section-title">Impacto em Números</h2>
                 <div class="metrics-grid" id="metrics-container">
-                    </div>
+                    <div class="card metric-card"><span class="metric-number">-40%</span><p>Uso de Água com Tecnologias</p></div>
+                    <div class="card metric-card"><span class="metric-number">+30%</span><p>Preservação de Áreas Nativas</p></div>
+                    <div class="card metric-card"><span class="metric-number">100%</span><p>Rastreabilidade Sem Desmatamento</p></div>
+                </div>
             </div>
         </section>
 
         <section id="page-glossario" class="site-page" hidden>
             <div class="knowledge-section">
                 <h2 class="section-title">O que é o Agronegócio?</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-main); opacity: 0.8;">
-                    Entenda os conceitos fundamentais e os impactos socioambientais da cadeia produtiva.
-                </p>
+                <p style="text-align: center; margin-bottom: 2rem;">Entenda os conceitos fundamentais e os impactos socioambientais da cadeia produtiva.</p>
+                
                 <div id="glossary-container" class="tab-panels">
-                    </div>
+                    <article class="card">
+                        <h3>O que é o Agronegócio?</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">O agronegócio representa toda a cadeia econômica produtiva interconectada: iniciando pela indústria de insumos (maquinários, adubos e tecnologia), passando pelas atividades de cultivo no campo, e finalizando nas etapas de processamento industrial, logística, comercialização e distribuição até a sua mesa.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Impactos Socioambientais Críticos</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">A expansão irrestrita do agronegócio tradicional sem critérios ecológicos severos provoca degradações globais alarmantes como desmatamento em larga escala, consumo exacerbado de água potável, erosão severa do solo e poluição química de rios e lençóis freáticos por uso massivo de agrotóxicos.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Atitudes e Práticas de Transformação</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">Mudar o rumo do setor exige ações como Agricultura de Precisão (sensores IoT reduzindo água), Sistemas Integrados (ILPF alternando lavoura e floresta) e a valorização do Consumo Regional de microprodutores rurais.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
         <section id="page-calculadora" class="site-page" hidden>
             <div class="knowledge-section">
                 <h2 class="section-title">Calculadora de Impacto</h2>
-                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-main); opacity: 0.8;">
-                    Avalie seus hábitos de consumo e descubra como suas atitudes ajudam o planeta.
-                </p>
+                <p style="text-align: center; margin-bottom: 2rem;">Avalie seus hábitos de consumo e descubra como suas atitudes ajudam o planeta.</p>
+                
                 <div class="tab-panel">
                     <form id="calc-form" class="vertical-form">
                         <div>
@@ -113,7 +138,7 @@
                 <h3>AgroIA</h3>
                 <button id="chat-close">✕</button>
             </div>
-            <div id="chat-messages" class="chat-messages" aria-live="polite">
+            <div id="chat-messages" class="chat-messages">
                 <div class="msg bot-msg">Olá! Pergunte-me sobre "definição", "impacto" ou "atitudes"!</div>
             </div>
             <form id="chat-form-element" class="chat-form">
@@ -124,7 +149,7 @@
     </div>
 
     <footer class="main-footer">
-        <p>&copy; 2026 AgroConsciente. Cultivando conhecimento unificado.</p>
+        <p>&copy; 2026 AgroConsciente. Conhecimento unificado e garantido.</p>
     </footer>
 
     <script src="script.js"></script>
