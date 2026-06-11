@@ -1,11 +1,9 @@
-// Dicionário de Termos e Conhecimento da IA do Chat
 const aiKnowledge = {
     definicao: "O agronegócio é a integração de toda a cadeia produtiva rural, desde insumos e maquinários até a colheita, industrialização e venda.",
     impacto: "Os impactos severos incluem degradação de solos, desmatamento para pastagem, e o uso de químicos contaminantes em ecossistemas hídricos.",
     atitudes: "Atitudes essenciais envolvem o uso de agricultura de precisão, sistemas integrados ILPF, e a escolha por alimentos locais com certificação de desmatamento zero."
 };
 
-// Configurações Globais ao Carregar o Navegador
 document.addEventListener("DOMContentLoaded", () => {
     initTabsLogic();
     initCarouselLogic();
@@ -13,29 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
     initAccessibility();
 });
 
-// Lógica de Alternância das Abas (Tabs)
 function initTabsLogic() {
     const tabs = document.querySelectorAll('.tab-list button');
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const targetPanelId = tab.getAttribute('aria-controls');
-
-            // Atualiza acessibilidade dos botões das abas
             tabs.forEach(t => {
                 t.setAttribute('aria-selected', 'false');
                 t.setAttribute('tabindex', '-1');
             });
             tab.setAttribute('aria-selected', 'true');
             tab.setAttribute('tabindex', '0');
-
-            // Alterna a visibilidade dos painéis de texto
             document.querySelectorAll('.tab-panel').forEach(p => p.setAttribute('hidden', ''));
             document.getElementById(targetPanelId).removeAttribute('hidden');
         });
     });
 }
 
-// Lógica de Deslocamento do Carrossel de Tecnologias
 function initCarouselLogic() {
     const track = document.getElementById("carousel-track");
     const totalSlides = document.querySelectorAll(".carousel-item").length;
@@ -52,7 +44,6 @@ function initCarouselLogic() {
     });
 }
 
-// Lógica Operacional da IA (Chatbot)
 function initAiChatLogic() {
     const toggleBtn = document.getElementById("chat-toggle");
     const closeBtn = document.getElementById("chat-close");
@@ -63,13 +54,11 @@ function initAiChatLogic() {
 
     toggleBtn.addEventListener("click", () => {
         windowChat.removeAttribute("hidden");
-        toggleBtn.setAttribute("aria-expanded", "true");
         input.focus();
     });
 
     closeBtn.addEventListener("click", () => {
         windowChat.setAttribute("hidden", "");
-        toggleBtn.setAttribute("aria-expanded", "false");
     });
 
     form.addEventListener("submit", (e) => {
@@ -101,13 +90,11 @@ function initAiChatLogic() {
     }
 }
 
-// Lógica de Acessibilidade (Alto Contraste e Fontes)
 function initAccessibility() {
     let baseFontSizePercentage = 100;
     
-    document.getElementById("btn-contrast").addEventListener("click", (e) => {
-        const active = document.body.classList.toggle("high-contrast");
-        e.target.setAttribute("aria-pressed", active);
+    document.getElementById("btn-contrast").addEventListener("click", () => {
+        document.body.classList.toggle("high-contrast");
     });
 
     document.getElementById("btn-font-increase").addEventListener("click", () => {
