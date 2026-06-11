@@ -1,8 +1,7 @@
 /* ==========================================
-   1. DESIGN SYSTEM & VARIÁVEIS (:ROOT)
+   1. DESIGN SYSTEM & VARIÁVEIS
    ========================================== */
 :root {
-    /* Paleta de Cores e Temas */
     --primary: #2e7d32;
     --primary-light: #4caf50;
     --secondary: #1565c0;
@@ -11,18 +10,16 @@
     --text-main: #212121;
     --text-muted: #555555;
     --border-color: #e0e0e0;
-
-    /* Grid e Componentes */
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --radius: 8px;
     --font-base: 1rem;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --transition: all 0.3s ease;
 }
 
 /* ==========================================
-   2. CAMADA DE ALTO CONTRASTE (Acessibilidade)
+   2. ALTO CONTRASTE
    ========================================== */
 body.high-contrast {
     --primary: #ffff00;
@@ -34,363 +31,84 @@ body.high-contrast {
     --text-muted: #eeeeee;
     --border-color: #ffffff;
 }
-
-body.high-contrast .chat-toggle-btn,
-body.high-contrast .chat-header {
-    background-color: #000000;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-}
-
-body.high-contrast .tab-list button[aria-selected="true"] {
-    background-color: #ffff00;
-    color: #000000;
-    border: 2px solid #ffffff;
-}
+body.high-contrast .chat-toggle-btn, body.high-contrast .chat-header { background-color: #000; border: 2px solid #fff; color: #fff; }
+body.high-contrast .tab-list button[aria-selected="true"] { background-color: #ffff00; color: #000; border: 2px solid #fff; }
 
 /* ==========================================
-   3. ESTILOS GERAIS E RESETS
+   3. ESTILOS BASE E RESETS
    ========================================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-base); scroll-behavior: smooth; font-family: system-ui, -apple-system, sans-serif; }
+body { background-color: var(--bg-main); color: var(--text-main); line-height: 1.6; }
+*:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
 
-html {
-    font-size: var(--font-base);
-    scroll-behavior: smooth;
-    font-family: system-ui, -apple-system, sans-serif;
-}
+/* Barra de Acessibilidade */
+.accessibility-bar { background-color: #111; padding: var(--spacing-sm); display: flex; justify-content: flex-end; gap: var(--spacing-md); }
+.accessibility-bar button { background: transparent; color: #fff; border: 1px solid #fff; padding: 6px 12px; cursor: pointer; border-radius: var(--radius); }
 
-body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    line-height: 1.6;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Indicador visual de foco acessível */
-*:focus-visible {
-    outline: 3px solid var(--secondary);
-    outline-offset: 3px;
-}
-
-/* ==========================================
-   4. ACESSIBILIDADE E HEADER
-   ========================================== */
-.accessibility-bar {
-    background-color: #111111;
-    padding: var(--spacing-sm) var(--spacing-md);
-    display: flex;
-    justify-content: flex-end;
-    gap: var(--spacing-md);
-}
-
-.accessibility-bar button {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 6px 14px;
-    cursor: pointer;
-    border-radius: var(--radius);
-    font-size: 0.85rem;
-}
-
-.main-header {
-    background-color: var(--bg-card);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    color: var(--text-main);
-    text-decoration: none;
-}
-
+/* Header e Logo */
+.main-header { background-color: var(--bg-card); border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; }
+.header-container { max-width: 1200px; margin: 0 auto; padding: var(--spacing-md); display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.6rem; font-weight: bold; color: var(--text-main); text-decoration: none; }
 .logo span { color: var(--primary); }
-
-.nav-links {
-    display: flex;
-    gap: var(--spacing-md);
-    list-style: none;
-}
-
-.nav-links a {
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 600;
-}
+.nav-links { display: flex; gap: var(--spacing-md); list-style: none; }
+.nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; }
 
 /* ==========================================
-   5. HERO LAYOUT
+   4. ESTRUTURA DE SEÇÕES E LAYOUTS
    ========================================== */
-.hero-section {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.75)), url('https://picsum.photos/1920/1080?blur=1') no-repeat center/cover;
-    min-height: 45vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff;
-    padding: var(--spacing-lg);
-}
+.hero-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.75)), url('https://picsum.photos/1920/1080?blur=1') no-repeat center/cover; min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: var(--spacing-lg); }
+.section-title { text-align: center; margin: var(--spacing-lg) 0; font-size: 2.2rem; }
 
-.hero-content { max-width: 750px; }
-.hero-content h1 { font-size: 2.6rem; margin-bottom: var(--spacing-md); line-height: 1.2; }
-.hero-content p { font-size: 1.15rem; margin-bottom: var(--spacing-lg); color: #f0f0f0; }
-
-.btn-primary {
-    background-color: var(--primary);
-    color: #ffffff;
-    padding: var(--spacing-md) var(--spacing-lg);
-    text-decoration: none;
-    border-radius: var(--radius);
-    font-weight: bold;
-    display: inline-block;
-    transition: var(--transition);
-}
-
-/* ==========================================
-   6. SISTEMA DE ABAS (CENTRAL DE CONHECIMENTO)
-   ========================================== */
-.section-title {
-    text-align: center;
-    margin: var(--spacing-lg) 0 var(--spacing-md) 0;
-    font-size: 2.2rem;
-}
-
-.knowledge-section {
-    max-width: 950px;
-    margin: 0 auto;
-    padding: var(--spacing-md);
-}
-
-.tab-list {
-    display: flex;
-    flex-direction: column; /* Mobile First */
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-md);
-}
-
-.tab-list button {
-    background-color: var(--border-color);
-    color: var(--text-main);
-    border: none;
-    padding: var(--spacing-md);
-    font-size: 1.05rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: var(--radius);
-    transition: var(--transition);
-}
-
-.tab-list button[aria-selected="true"] {
-    background-color: var(--primary);
-    color: #ffffff;
-}
-
-.tab-panel {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    padding: var(--spacing-lg);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-}
-
+/* Central de Abas */
+.knowledge-section { max-width: 900px; margin: 0 auto; padding: var(--spacing-md); }
+.tab-list { display: flex; flex-direction: column; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); }
+.tab-list button { background-color: var(--border-color); color: var(--text-main); border: none; padding: var(--spacing-md); font-size: 1.05rem; font-weight: bold; cursor: pointer; border-radius: var(--radius); }
+.tab-list button[aria-selected="true"] { background-color: var(--primary); color: #fff; }
+.tab-panel { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: var(--spacing-lg); }
 .tab-panel[hidden] { display: none; }
-.tab-panel h3 { color: var(--primary); margin-bottom: var(--spacing-md); font-size: 1.6rem; }
-.tab-panel p { color: var(--text-muted); font-size: 1.1rem; }
+.tab-panel h3 { color: var(--primary); margin-bottom: var(--spacing-md); }
 .tab-panel ul { margin-top: var(--spacing-md); padding-left: var(--spacing-lg); }
-.tab-panel li { margin-bottom: var(--spacing-sm); font-size: 1.05rem; color: var(--text-muted); }
+.tab-panel li { margin-bottom: var(--spacing-sm); }
 
-/* ==========================================
-   7. CARROSSEL DE PRÁTICAS
-   ========================================== */
-.carousel-container {
-    max-width: 800px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
+/* Carrossel */
+.carousel-container { max-width: 800px; margin: 0 auto; overflow: hidden; position: relative; }
+.carousel { display: flex; transition: transform 0.4s ease; }
+.carousel-item { min-width: 100%; padding: var(--spacing-lg); background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border-color); text-align: center; }
+.carousel-controls { display: flex; justify-content: space-between; max-width: 800px; margin: var(--spacing-sm) auto; padding: 0 var(--spacing-md); }
+.carousel-controls button { background: var(--primary); color: white; border: none; padding: 8px 16px; cursor: pointer; border-radius: var(--radius); }
 
-.carousel {
-    display: flex;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.carousel-item {
-    min-width: 100%;
-    padding: var(--spacing-lg);
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border-color);
-    text-align: center;
-}
-
-.carousel-item h3 { color: var(--primary); margin-bottom: var(--spacing-sm); }
-
-.carousel-controls {
-    display: flex;
-    justify-content: space-between;
-    max-width: 800px;
-    margin: var(--spacing-sm) auto var(--spacing-lg) auto;
-    padding: 0 var(--spacing-md);
-}
-
-.carousel-controls button {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    cursor: pointer;
-    border-radius: var(--radius);
-    font-weight: bold;
-}
-
-/* ==========================================
-   8. GRID DE MÉTRICAS (MOBILE FIRST)
-   ========================================== */
-.metrics-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 Coluna em dispositivos móveis */
-    gap: var(--spacing-md);
-    max-width: 1200px;
-    margin: 0 auto var(--spacing-lg) auto;
-    padding: 0 var(--spacing-md);
-}
-
-.card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    padding: var(--spacing-lg);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-}
-
+/* Grid de Métricas (Mobile-First) */
+.metrics-grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-md); max-width: 1200px; margin: 0 auto; padding: 0 var(--spacing-md); }
+.card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: var(--spacing-lg); }
 .metric-card { text-align: center; border-top: 5px solid var(--primary); }
-.metric-number { font-size: 2.6rem; font-weight: 800; color: var(--primary); display: block; }
+.metric-number { font-size: 2.5rem; font-weight: 800; color: var(--primary); }
 
 /* ==========================================
-   9. COMPONENTE DE INTELIGÊNCIA ARTIFICIAL (IA)
+   5. BOT DE IA
    ========================================== */
-.chat-bot-container {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    z-index: 1000;
-}
-
-.chat-toggle-btn {
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: var(--spacing-md) var(--spacing-lg);
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: bold;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
-}
-
-.chat-window {
-    width: 330px;
-    height: 420px;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 70px;
-    right: 0;
-}
-
+.chat-bot-container { position: fixed; bottom: 20px; right: 20px; z-index: 1000; }
+.chat-toggle-btn { background-color: var(--primary); color: white; border: none; padding: var(--spacing-md) var(--spacing-lg); border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.chat-window { width: 320px; height: 400px; background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); box-shadow: 0 6px 20px rgba(0,0,0,0.15); display: flex; flex-direction: column; position: absolute; bottom: 65px; right: 0; }
 .chat-window[hidden] { display: none; }
-
-.chat-header {
-    background-color: var(--primary);
-    color: white;
-    padding: var(--spacing-md);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-header h3 { font-size: 1.1rem; }
-.chat-header button { background: transparent; border: none; color: white; font-size: 1.2rem; cursor: pointer; }
-
-.chat-messages {
-    flex: 1;
-    padding: var(--spacing-md);
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    background-color: #f1f3f1;
-}
-
-.msg { padding: 10px 14px; border-radius: var(--radius); max-width: 85%; font-size: 0.95rem; line-height: 1.4; }
-.system-msg { background-color: #e3f2fd; color: #0d47a1; align-self: flex-start; text-align: center; width: 100%; max-width: 100%; }
-.user-msg { background-color: var(--primary); color: white; align-self: flex-end; border-bottom-right-radius: 0; }
-.bot-msg { background-color: var(--bg-card); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 0; border: 1px solid var(--border-color); }
-
+.chat-header { background-color: var(--primary); color: white; padding: var(--spacing-md); display: flex; justify-content: space-between; }
+.chat-header button { background: transparent; border: none; color: white; font-size: 1.1rem; cursor: pointer; }
+.chat-messages { flex: 1; padding: var(--spacing-md); overflow-y: auto; display: flex; flex-direction: column; gap: var(--spacing-sm); background-color: #ededed; }
+.msg { padding: 8px 12px; border-radius: var(--radius); max-width: 85%; font-size: 0.95rem; }
+.system-msg { background-color: #e3f2fd; color: #0d47a1; width: 100%; text-align: center; }
+.user-msg { background-color: var(--primary); color: white; align-self: flex-end; }
+.bot-msg { background-color: var(--bg-card); color: var(--text-main); align-self: flex-start; border: 1px solid var(--border-color); }
 .chat-form { display: flex; border-top: 1px solid var(--border-color); }
-.chat-form input { flex: 1; padding: var(--spacing-md); border: none; outline: none; font-size: 0.95rem; }
-.chat-form button { background-color: var(--secondary); color: white; border: none; padding: 0 var(--spacing-lg); cursor: pointer; font-weight: bold; }
+.chat-form input { flex: 1; padding: var(--spacing-md); border: none; outline: none; }
+.chat-form button { background-color: var(--secondary); color: white; border: none; padding: 0 var(--spacing-md); cursor: pointer; }
+
+.main-footer { background-color: #1a1a1a; color: #fff; text-align: center; padding: var(--spacing-lg); margin-top: var(--spacing-lg); }
 
 /* ==========================================
-   10. SCROLL REVEAL & FOOTER
-   ========================================== */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.scroll-reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.main-footer {
-    background-color: #1a1a1a;
-    color: #ffffff;
-    text-align: center;
-    padding: var(--spacing-lg) var(--spacing-md);
-}
-
-/* ==========================================
-   11. MEDIA QUERIES (GRID & RESPONSIVIDADE DESKTOP)
+   6. MEDIA QUERIES (DESKTOP)
    ========================================== */
 @media (min-width: 768px) {
-    /* Ajuste de Abas para Linha no Desktop */
     .tab-list { flex-direction: row; }
     .tab-list button { flex: 1; }
-
-    /* Mudança estrutural do Grid no Desktop */
-    .metrics-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .hero-section { min-height: 55vh; }
-    .hero-content h1 { font-size: 3.6rem; }
-    .chat-window { width: 380px; height: 470px; }
+    .metrics-grid { grid-template-columns: repeat(3, 1fr); } /* Transforma em 3 colunas paralelas */
 }
