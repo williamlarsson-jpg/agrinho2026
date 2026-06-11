@@ -21,6 +21,7 @@
                 <ul class="nav-links">
                     <li><button data-target="page-inicio" class="nav-btn active">Início</button></li>
                     <li><button data-target="page-glossario" class="nav-btn">Dicionário do Agro</button></li>
+                    <li><button data-target="page-impactos" class="nav-btn">Impactos</button></li>
                     <li><button data-target="page-calculadora" class="nav-btn">Calculadora</button></li>
                 </ul>
             </nav>
@@ -78,14 +79,21 @@
                     <div class="card metric-card" style="border-top: 5px solid var(--secondary); cursor: pointer;">
                         <span class="metric-number" style="color: var(--secondary); font-size: 2rem;">📖</span>
                         <h3>Dicionário do Agro</h3>
-                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Descubra como funciona a cadeia do agronegócio e seus principais impactos e soluções.</p>
+                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Descubra como funciona a cadeia do agronegócio e seus principais conceitos.</p>
                         <button data-target="page-glossario" class="btn-primary link-btn" style="background-color: var(--secondary);">Abrir Dicionário</button>
+                    </div>
+
+                    <div class="card metric-card" style="border-top: 5px solid #d32f2f; cursor: pointer;">
+                        <span class="metric-number" style="color: #d32f2f; font-size: 2rem;">🌍</span>
+                        <h3>Impactos Ambientais</h3>
+                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Entenda as consequências severas do modelo tradicional para o nosso planeta.</p>
+                        <button data-target="page-impactos" class="btn-primary link-btn" style="background-color: #d32f2f;">Ver Impactos</button>
                     </div>
 
                     <div class="card metric-card" style="cursor: pointer;">
                         <span class="metric-number" style="font-size: 2rem;">🧮</span>
-                        <h3>Calculadora de Impacto</h3>
-                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Avalie como seus hábitos de consumo urbano se conectam com a produção do agronegócio.</p>
+                        <h3>Calculadora</h3>
+                        <p style="margin: 0.5rem 0 1rem; opacity: 0.8; font-size: 0.9rem;">Avalie como seus hábitos de consumo urbano se conectam com a produção do agro.</p>
                         <button data-target="page-calculadora" class="btn-primary link-btn">Abrir Calculadora</button>
                     </div>
 
@@ -96,83 +104,13 @@
         <section id="page-glossario" class="site-page" hidden>
             <div class="knowledge-section">
                 <h2 class="section-title">O que é o Agronegócio?</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Entenda os conceitos fundamentais e os impactos socioambientais de toda a cadeia produtiva.</p>
+                <p style="text-align: center; margin-bottom: 2rem;">Entenda os conceitos fundamentais e as soluções da cadeia produtiva.</p>
                 
                 <div id="glossary-container" class="tab-panels">
                     <article class="card">
                         <h3>A Cadeia do Agronegócio</h3>
-                        <p style="margin-top:0.5rem; opacity:0.85;">Diferente da agricultura isolada, o agronegócio abrange desde a indústria de insumos (máquinas, fertilizantes, biotecnologia), passa pela produção no campo, e vai até a agroindústria (processamento), logística de transporte, exportação e distribuição final nos mercados comerciais.</p>
-                    </article>
-                    <article class="card">
-                        <h3>Impactos Socioambientais Críticos</h3>
-                        <p style="margin-top:0.5rem; opacity:0.85;">Quando o agronegócio expande sem planejamento ecológico sério, ele causa grandes impactos globais: desmatamento para abertura de pastagens e monoculturas, uso massivo e poluição de recursos hídricos, degradação do solo e emissão de gases de efeito estufa no transporte e processamento industrial.</p>
+                        <p style="margin-top:0.5rem; opacity:0.85;">Diferente da agricultura isolada, o agronegócio abrange desde a indústria de insumos (máquinas, fertilizantes, biotechnologia), passa pela produção no campo, e vai até a agroindústria (processamento), logística de transporte, exportação e distribuição final nos mercados comerciais.</p>
                     </article>
                     <article class="card">
                         <h3>Práticas de Transformação (Agro Verde)</h3>
-                        <p style="margin-top:0.5rem; opacity:0.85;">Para se tornar sustentável, o agronegócio utiliza soluções modernas como a Agricultura de Precisão (uso de dados e sensores para reduzir desperdício), Sistemas Integrados (ILPF) que eliminam a necessidade de desmatar novas áreas, e defensivos biológicos que substituem os agrotóxicos tradicionais.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="page-calculadora" class="site-page" hidden>
-            <div class="knowledge-section">
-                <h2 class="section-title">Calculadora de Impacto</h2>
-                <p style="text-align: center; margin-bottom: 2rem;">Avalie seus hábitos e descubra sua pegada ecológica em relação aos produtos do agronegócio.</p>
-                
-                <div class="tab-panel">
-                    <form id="calc-form" class="vertical-form">
-                        <div>
-                            <label for="carne" style="font-weight: bold; display: block; margin-bottom: 0.5rem;">1. Frequência de consumo de carne vermelha (Pecuária):</label>
-                            <select id="carne">
-                                <option value="0">Nunca (Vegetariano/Vegano)</option>
-                                <option value="15">1 a 2 vezes por semana</option>
-                                <option value="50">Mais de 3 vezes por semana (Alto impacto)</option>
-                            </select>
-                        </div>
-
-                        <div>
-                            <label for="desperdicio" style="font-weight: bold; display: block; margin-bottom: 0.5rem;">2. Desperdício ou descarte de alimentos na sua casa:</label>
-                            <select id="desperdicio">
-                                <option value="5">Quase nenhum (Aproveito tudo)</option>
-                                <option value="30">Algum desperdício (Jogamos comida fora às vezes)</option>
-                            </select>
-                        </div>
-
-                        <button type="submit" class="btn-primary">Ver Resultado</button>
-                    </form>
-                    
-                    <div id="calc-result" class="result-box" hidden>
-                        <h3>Resultado da sua Pegada:</h3>
-                        <p id="result-text" style="font-size: 1.2rem; font-weight: bold; margin-top: 0.5rem;"></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <div class="chat-bot-container">
-        <button id="chat-toggle" class="chat-toggle-btn">🤖 AgroIA</button>
-        <div id="chat-window" class="chat-window" hidden>
-            <div class="chat-header">
-                <h3>AgroIA</h3>
-                <button id="chat-close">✕</button>
-            </div>
-            <div id="chat-messages" class="chat-messages">
-                <div class="msg bot-msg">Olá! Pergunte-me sobre "definição", "impacto" ou "atitudes" do agronegócio!</div>
-            </div>
-            <form id="chat-form-element" class="chat-form">
-                <input type="text" id="chat-input" placeholder="Pergunte sobre agronegócio..." required>
-                <button type="submit">></button>
-            </form>
-        </div>
-    </div>
-
-    <footer class="main-footer">
-        <p>&copy; 2026 AgroConsciente. Conhecimento completo sobre a cadeia do Agronegócio.</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                        <p style="margin-top:0.5rem; opacity:0.85;">Para se tornar sustentável, o agronegócio utiliza soluções modernas como a Agricultura de Precisão
