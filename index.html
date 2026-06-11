@@ -109,8 +109,103 @@
                 <div id="glossary-container" class="tab-panels">
                     <article class="card">
                         <h3>A Cadeia do Agronegócio</h3>
-                        <p style="margin-top:0.5rem; opacity:0.85;">Diferente da agricultura isolada, o agronegócio abrange desde a indústria de insumos (máquinas, fertilizantes, biotechnologia), passa pela produção no campo, e vai até a agroindústria (processamento), logística de transporte, exportação e distribuição final nos mercados comerciais.</p>
+                        <p style="margin-top:0.5rem; opacity:0.85;">Diferente da agricultura isolada, o agronegócio abrange desde a indústria de insumos (máquinas, fertilizantes, biotecnologia), passa pela produção no campo, e vai até a agroindústria (processamento), logística de transporte, exportação e distribuição final nos mercados comerciais.</p>
                     </article>
                     <article class="card">
                         <h3>Práticas de Transformação (Agro Verde)</h3>
-                        <p style="margin-top:0.5rem; opacity:0.85;">Para se tornar sustentável, o agronegócio utiliza soluções modernas como a Agricultura de Precisão
+                        <p style="margin-top:0.5rem; opacity:0.85;">Para se tornar sustentável, o agronegócio utiliza soluções modernas como a Agricultura de Precisão (uso de dados e sensores para reduzir desperdício), Sistemas Integrados (ILPF) que eliminam a necessidade de desmatar novas áreas, e defensivos biológicos que substituem os agrotóxicos tradicionais.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-impactos" class="site-page" hidden>
+            <div class="knowledge-section">
+                <h2 class="section-title">O Impacto Ambiental do Agronegócio</h2>
+                <p style="text-align: center; margin-bottom: 2rem; color: #d32f2f; font-weight: bold;">⚠️ Consequências severas do modelo tradicional para o meio ambiente</p>
+                
+                <div class="tab-panels">
+                    <article class="card" style="border-left: 5px solid #d32f2f;">
+                        <h3>🌳 Desmatamento e Perda de Biodiversidade</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">A expansão da fronteira agrícola (principalmente para pastagens e monoculturas como a soja) destrói biomas inteiros, extinguindo espécies e destruindo habitats naturais essenciais.</p>
+                    </article>
+
+                    <article class="card" style="border-left: 5px solid #d32f2f;">
+                        <h3>💨 Emissão de Gases de Efeito Estufa (GEE)</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">O setor é um dos maiores emissores globais. O metano (CH₄) vem principalmente da digestão dos ruminantes (bovinos), enquanto o dióxido de carbono (CO₂) e o óxido nitroso (N₂O) são frutos diretos do desmatamento e do uso intenso de fertilizantes químicos.</p>
+                    </article>
+
+                    <article class="card" style="border-left: 5px solid #d32f2f;">
+                        <h3>💧 Escassez e Poluição da Água</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">A atividade consome cerca de 70% da água doce disponível no planeta. Além disso, o uso excessivo de defensivos agrícolas (pesticidas) e adubos químicos contamina gravemente rios e lençóis freáticos.</p>
+                    </article>
+
+                    <article class="card" style="border-left: 5px solid #d32f2f;">
+                        <h3>⏳ Degradação do Solo</h3>
+                        <p style="margin-top:0.5rem; opacity:0.85;">Práticas agressivas como o monocultivo repetitivo e o manejo inadequado da terra causam erosão acelerada, perda severa de nutrientes vitais e a desertificação definitiva do solo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-calculadora" class="site-page" hidden>
+            <div class="knowledge-section">
+                <h2 class="section-title">Calculadora de Impacto</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">Avalie seus hábitos e descubra sua pegada ecológica em relação aos produtos do agronegócio.</p>
+                
+                <div class="tab-panel">
+                    <form id="calc-form" class="vertical-form">
+                        <div>
+                            <label for="carne" style="font-weight: bold; display: block; margin-bottom: 0.5rem;">1. Frequência de consumo de carne vermelha (Pecuária):</label>
+                            <select id="carne">
+                                <option value="0">Nunca (Vegetariano/Vegano)</option>
+                                <option value="15">1 a 2 vezes por semana</option>
+                                <option value="50">Mais de 3 vezes por semana (Alto impacto)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="desperdicio" style="font-weight: bold; display: block; margin-bottom: 0.5rem;">2. Desperdício ou descarte de alimentos na sua casa:</label>
+                            <select id="desperdicio">
+                                <option value="5">Quase nenhum (Aproveito tudo)</option>
+                                <option value="30">Algum desperdício (Jogamos comida fora às vezes)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary">Ver Resultado</button>
+                    </form>
+                    
+                    <div id="calc-result" class="result-box" hidden>
+                        <h3>Resultado da sua Pegada:</h3>
+                        <p id="result-text" style="font-size: 1.2rem; font-weight: bold; margin-top: 0.5rem;"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div class="chat-bot-container">
+        <button id="chat-toggle" class="chat-toggle-btn">🤖 AgroIA</button>
+        <div id="chat-window" class="chat-window" hidden>
+            <div class="chat-header">
+                <h3>AgroIA</h3>
+                <button id="chat-close">✕</button>
+            </div>
+            <div id="chat-messages" class="chat-messages">
+                <div class="msg bot-msg">Olá! Pergunte-me sobre "definição", "impacto" ou "atitudes" do agronegócio!</div>
+            </div>
+            <form id="chat-form-element" class="chat-form">
+                <input type="text" id="chat-input" placeholder="Pergunte sobre agronegócio..." required>
+                <button type="submit">></button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 AgroConsciente. Conhecimento completo sobre a cadeia do Agronegócio.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
