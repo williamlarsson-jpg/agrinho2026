@@ -51,17 +51,19 @@ function initPageNavigation() {
 function initCarouselLogic() {
     const track = document.getElementById("carousel-track");
     let slideIdx = 0;
-    const totalSlides = document.querySelectorAll(".carousel-item").length;
-
-    if (document.getElementById("next-slide") && track) {
-        document.getElementById("next-slide").onclick = () => { 
-            slideIdx = (slideIdx + 1) % totalSlides; 
-            track.style.transform = `translateX(-${slideIdx * 100}%)`; 
-        };
-        document.getElementById("prev-slide").onclick = () => { 
-            slideIdx = (slideIdx - 1 + totalSlides) % totalSlides; 
-            track.style.transform = `translateX(-${slideIdx * 100}%)`; 
-        };
+    
+    if (track) {
+        const totalSlides = track.querySelectorAll(".carousel-item").length;
+        if (document.getElementById("next-slide") && totalSlides > 0) {
+            document.getElementById("next-slide").onclick = () => { 
+                slideIdx = (slideIdx + 1) % totalSlides; 
+                track.style.transform = `translateX(-${slideIdx * 100}%)`; 
+            };
+            document.getElementById("prev-slide").onclick = () => { 
+                slideIdx = (slideIdx - 1 + totalSlides) % totalSlides; 
+                track.style.transform = `translateX(-${slideIdx * 100}%)`; 
+            };
+        }
     }
 }
 
@@ -82,17 +84,25 @@ function initCalculadora() {
     }
 }
 
-// FUNCIONAMENTO DO CHATBOT DO PRODUTO
+// FUNCIONAMENTO DO CHATBOT (CORRIGIDO)
 function initAiChatLogic() {
     const toggle = document.getElementById("chat-toggle");
     const chatWin = document.getElementById("chat-window");
     const form = document.getElementById("chat-form-element");
     const inp = document.getElementById("chat-input");
     const msgArea = document.getElementById("chat-messages");
+    const closeBtn = document.getElementById("chat-close");
 
     if (toggle && chatWin) {
+        // Abre e fecha pelo botão principal
         toggle.onclick = () => chatWin.hidden = !chatWin.hidden;
-        document.getElementById("chat-close").onclick = () => chatWin.hidden = true;
+        
+        // CORREÇÃO: Fecha a janela clicando no X
+        if (closeBtn) {
+            closeBtn.onclick = () => {
+                chatWin.hidden = true;
+            };
+        }
         
         if (form) {
             form.onsubmit = (e) => {
